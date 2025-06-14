@@ -1,0 +1,22 @@
+{% extends "l_logs/base.html" %}
+
+{% block content %}
+    <h2>Topic: {{ topic }}</h2>
+
+    <h3>Posts:</h3>
+
+    <p>
+        <a href="{% url "l_logs:new_entry" topic.id %}">Add new post</a>
+    </p>
+
+    <ul>
+        {% for entry in entries %}
+            <li>
+                <p>{{ entry.date_added|date:"d.m.Y H:i" }}</p>
+                <p>{{ entry.text|linebreaks }}</p>
+            </li>
+        {% empty %}
+            <li>No posts added to this topic yet</li>
+        {% endfor %}
+    </ul>
+{% endblock content %}

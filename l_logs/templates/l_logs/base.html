@@ -7,7 +7,10 @@
 </head>
 <body>
     <h1>
-        <a href="{% url 'l_logs:index' %}">Learning log</a></h1>
+        <a href="{% url 'l_logs:index' %}">Learning log</a>
+         | 
+        <a href="{% url 'l_logs:topics' %}">Topics</a>
+    </h1>
     {% block content %}{% endblock content %}
 </body>
 </html>
