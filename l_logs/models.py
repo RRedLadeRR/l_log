@@ -28,4 +28,4 @@ class Entry(models.Model):
         verbose_name_plural = "Posts"
 
     def __str__(self):
-        return f"{self.text[:50]}..."
+        return self.text if len(self.text) <= 50 else f"{self.text[:50]}..."
