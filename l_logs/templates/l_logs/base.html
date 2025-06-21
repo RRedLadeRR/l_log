@@ -3,9 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load django_bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
     <title>L Log</title>
 </head>
 <body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+        <div class="container-fluid">
+            {% comment %} <a class="navbar-brand" href="#">Learning logs</a> {% endcomment %}
+            <a class="navbar-brand" href="{% url 'l_logs:index' %}">Learning log</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'l_logs:topics' %}">Topics</a>
+                        {% comment %} <a class="nav-link active" aria-current="page" href="#">Home</a> {% endcomment %}
+                    </li>
+                    {% comment %} <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li> {% endcomment %}
+                </ul>
+                <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                    {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <span class="navbar-text me-2">{{ user.username }}</span>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'accounts:login' %}">Login</a>
+                        </li>
+                        |
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'accounts:register' %}">Register</a>
+                        </li>
+                    {% endif %}
+                </ul>
+                {% comment %} <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form> {% endcomment %}
+                {% if user.is_authenticated %}
+                    <form action="{% url 'accounts:logout' %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-outline-secondary btn-sm">Log out</button>
+                    </form>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
     <h1>
         <a href="{% url 'l_logs:index' %}">Learning log</a>
          | 
