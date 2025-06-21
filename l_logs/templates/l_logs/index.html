@@ -1,5 +1,9 @@
 {% extends "l_logs/base.html" %}
 
-{% block content %}
-    <p>Learning log допомагає Вам відслідковувати ваші успіхи у вивченні будь-якої теми.</p>
-{% endblock content %}
+{% block header %}
+    <div class="p-3 mb-4 bg-light border rounded-3">
+        <h1 class="display-3">Learning Log</h1>
+    </div>
+    <p class="lead">Learning log допомагає Вам відслідковувати ваші успіхи у вивченні будь-якої теми.</p>
+    <a class="btn btn-primary btn-lg mt-1" href="{% url 'l_logs:topics' %}">Topics list</a>
+{% endblock header %}
