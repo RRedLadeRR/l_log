@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -7,7 +8,7 @@ class Topic(models.Model):
 
     text = models.CharField(max_length=255, verbose_name="Topic name")
     date_added = models.DateTimeField(auto_now_add=True, verbose_name="Created")
-
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="Owner")
 
     class Meta:
         verbose_name = "Topic"
