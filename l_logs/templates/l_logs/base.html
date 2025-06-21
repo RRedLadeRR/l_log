@@ -10,6 +10,12 @@
         <a href="{% url 'l_logs:index' %}">Learning log</a>
          | 
         <a href="{% url 'l_logs:topics' %}">Topics</a>
+         | 
+        {% if user.is_authenticated %}
+            {{ user.username }}
+        {% else %}
+            <a href="{% url 'accounts:login' %}">Login</a>
+        {% endif %}
     </h1>
     {% block content %}{% endblock content %}
 </body>
