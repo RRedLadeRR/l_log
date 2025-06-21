@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 
 from .forms import TopicForm, EntryForm
 from .models import Topic, Entry
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -14,6 +15,8 @@ def topics(request):
     topics = Topic.objects.order_by("date_added")
     context = {"topics": topics}
     return render(request, 'l_logs/topics.html', context)
+
+@login_required
 
 def topic(request, topic_id):
     """Shows current topic and all its items"""
