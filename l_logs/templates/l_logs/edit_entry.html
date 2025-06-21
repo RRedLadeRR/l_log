@@ -5,10 +5,10 @@
         <a href="{% url 'l_logs:topic' topic.id %}">{{ topic }}</a>
     </h2>
 
-    <h3>New post for topic</h3>
-    <form action="{% url 'l_logs:new_entry' topic.id %}" method="post">
+    <h3>Edit post</h3>
+    <form action="{% url 'l_logs:edit_entry' entry.id %}" method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Add post</button>
+        <button type="submit">Save post</button>
     </form>
 {% endblock content %}

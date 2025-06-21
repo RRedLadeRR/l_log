@@ -14,6 +14,7 @@
             <li>
                 <p>{{ entry.date_added|date:"d.m.Y H:i" }}</p>
                 <p>{{ entry.text|linebreaks }}</p>
+                <a href="{% url 'l_logs:edit_entry' entry.id %}">Edit post</a>
             </li>
         {% empty %}
             <li>No posts added to this topic yet</li>
